@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta property="og:title" content="Festival Ghost • G.H.O.S.T." />
+    <meta property="og:url" content="https://potty.kovu.dog" />
+    <meta
+      property="og:image"
+      content="https://potty.kovu.dog/ghosts/ghost1.png"
+    />
+    <meta property="og:type" content="website" />
+    <title>Festival Ghost • G.H.O.S.T.</title>
+    <link
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="/style.css" rel="stylesheet" />
+    <link href="/site-icon.png" rel="icon" sizes="192x192" />
+    <link href="/site-icon-apple.png" rel="apple-touch-icon" />
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/ghosts.js"></script>
+  </head>
+  <body class="scanlines">
+    <div class="container py-5">
+      <div class="row text-center">
+        <div class="col-md-6 mx-auto">
+          <div id="gutter" class="px-3">
+            <p class="sway">
+              <img
+                src="/ghosts/ghost1.png"
+                width="300"
+                class="img-fluid blur-in"
+                id="ghostSpeaker"
+              />
+            </p>
+            <h1 class="ghost-glow mb-5 blur-in" id="ghostMessage">
+              <span id="ghostClue"
+                >Hello? Who is this? Ah, must be a wrong number. Sorry!</span
+              >
+            </h1>
+            <div
+              class="btn btn-outline-secondary btn-lg ghost-glow blur-in"
+              id="closeButton"
+            >
+              Depart
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        $("#closeButton").on("click", function () {
+          window.close();
+        });
+
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+          get: (searchParams, prop) => searchParams.get(prop),
+        });
+        var ghostKey = params.key;
+        foundGhost = ghostData.find((x) => x.key === ghostKey);
+        if (foundGhost == null || foundGhost == undefined) {
+          $("#ghostClue").html(
+            "Hello? Who is this? Ah, must be a wrong number. Sorry!",
+          );
+          return;
+        }
+
+        $("#ghostClue").html(foundGhost.clue);
+        if (foundGhost.ghost != "") {
+          $("#ghostSpeaker").attr("src", `/ghosts/${foundGhost.ghost}`);
+        }
+
+        const postcardKeys = ["j0zjj2dt", "", "70d22px4", "xde2xo8f"];
+        if (postcardKeys.find((x) => x == foundGhost.key)) {
+          localStorage.setItem("cardsEnabled", true);
+        }
+
+        updateStoredClues(ghostKey);
+      });
+
+      function updateStoredClues(newClue) {
+        if (newClue == null) return;
+
+        var cluesFound = localStorage.getItem("cluesFound");
+        var cluesFoundArray = JSON.parse(cluesFound);
+        if (cluesFound == null) cluesFoundArray = [];
+
+        if (!cluesFoundArray.find((x) => x == newClue)) {
+          cluesFoundArray.push(newClue);
+          var cluesFoundJson = JSON.stringify(cluesFoundArray);
+          localStorage.setItem("cluesFound", cluesFoundJson);
+        }
+      }
+    </script>
+  </body>
+</html>

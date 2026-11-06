@@ -1,0 +1,372 @@
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Mozilla+Text:wght@200..700&display=swap");
+
+/* basic stuff */
+
+body {
+  background-color: black;
+  font-family: "Mozilla Text", sans-serif;
+}
+
+#hero {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: url(images/hero.jpg);
+}
+
+#footer {
+  height: 110vh;
+  background-image: url(images/footer.jpg);
+  background-size: cover;
+  background-position: 50% 0%;
+}
+
+@media (max-width: 992px) {
+  #footer {
+    height: 75vh;
+  }
+}
+
+@media (max-width: 576px) {
+  #footer {
+    height: 50vh;
+  }
+}
+
+/* cool stuff */
+
+.scanlines {
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06));
+  background-size: auto, auto;
+  background-size:
+    100% 4px,
+    2px 100%;
+}
+
+.ghost-glow,
+.highlight b {
+  text-shadow:
+    3.4px 0 1px rgba(0, 30, 255, 0.5),
+    -3.4px 0 1px rgba(255, 0, 80, 0.3),
+    0 0 3px;
+}
+
+.scanlines-image {
+  filter: drop-shadow(3.4px 0 1px rgba(0, 30, 255, 0.5)) drop-shadow(-3.4px 0 1px rgba(255, 0, 80, 0.3));
+}
+
+/* color stuff */
+
+#ghostMessage,
+.ghost-font {
+  font-family: "DynaPuff", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.text-bfc-blue {
+  color: #00c4ee;
+}
+
+.text-bfc-teal {
+  color: #16b9ac;
+}
+
+.text-bfc-orange {
+  color: #fea92b;
+}
+
+.text-bfc-pink {
+  color: #dc4583;
+}
+
+.theme-green {
+  background-color: #0c2617;
+}
+
+.theme-orange {
+  background-color: #261400;
+}
+
+.border-orange {
+  border-color: #663500 !important;
+}
+
+.theme-purple {
+  background-color: #200c49;
+}
+
+.border-purple {
+  border-color: #381480 !important;
+}
+
+/* animation stuff */
+
+.spin {
+  animation: spin 1.5s ease-in-out;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.bounce {
+  animation: bounce 1.25s ease-in-out;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0%);
+  }
+
+  17% {
+    transform: translateY(10%);
+  }
+
+  33% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(10%);
+  }
+
+  66% {
+    transform: translateY(0%);
+  }
+
+  83% {
+    transform: translateY(10%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.sway {
+  animation: sway 4s ease-in-out alternate;
+  animation-iteration-count: infinite;
+  opacity: 0.9;
+}
+
+@keyframes sway {
+  0% {
+    transform: rotate(4deg);
+  }
+
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
+.booped {
+  animation: booped 0.25s forwards;
+}
+
+@keyframes booped {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.025);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.blur-in {
+  animation: blurIn 2.5s ease-in-out;
+}
+
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(15px);
+    transform: translate(0, 10%);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translate(0, 0);
+  }
+}
+
+/* specific stuff */
+
+.sign-thumb {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: top;
+}
+
+@media (max-width: 992px) {
+  .sign-thumb {
+    height: 200px;
+  }
+}
+
+.art-postcard:hover {
+  z-index: 1000;
+}
+
+.card-hover:hover {
+  transform: scale(1.1);
+  transition: transform 0.1s ease-out;
+  cursor: grab;
+}
+
+.card-swap {
+  transform: scale(1.1);
+  transition: transform 0.1s ease-out;
+  cursor: grabbing;
+}
+
+.square-image {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+
+.square-image img {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.paper {
+  background-color: #ccc;
+  background-image: url(images/paper-texture.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.tapper {
+  touch-action: manipulation;
+}
+
+.bg-spooky {
+  background-color: #333;
+  background-image: url(proof/bg-spooky.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  border: solid 10px #2a1480 !important;
+}
+
+.bg-harvest {
+  background-color: #333;
+  background-image: url(proof/bg-harvest.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  border: solid 10px #bb7d2b !important;
+}
+
+.bg-tot {
+  background-color: #333;
+  background-image: url(proof/bg-tot.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  border: solid 10px #793a9d !important;
+}
+
+.bg-festival {
+  background-color: #333;
+  background-image: url(proof/bg-festival.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  border: solid 10px #269ec9 !important;
+}
+
+.bg-festivalnight {
+  background-color: #333;
+  background-image: url(proof/bg-festivalnight.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  border: solid 10px #9d3a49 !important;
+}
+
+.bg-night {
+  background-color: #333;
+  background-image: url(proof/bg-night.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  border: solid 10px #104f29 !important;
+}
+
+.border-glass {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+#friendshipCert {
+  box-shadow: 0 4px 20px 3px #000;
+}
+
+#cardFront .card-header {
+  font-weight: 800;
+}
+
+#cardFront .card-footer {
+  font-size: 0.667em;
+}
+
+#playerName,
+#ghostName {
+  letter-spacing: -2px;
+}
+
+.attributeText {
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.bg-blur {
+  backdrop-filter: blur(10px) brightness(55%);
+}
+
+.bg-blur-icon {
+  backdrop-filter: blur(5px) brightness(50%);
+}
+
+.bg-blur-dark {
+  backdrop-filter: blur(8px) brightness(33%);
+}
+
+.shadow-blur {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* coloring alternating <b>, <strong> */
+
+.bold-colors b:nth-child(3n + 0) {
+  color: #00c4ee;
+}
+
+.bold-colors b:nth-child(3n-1) {
+  color: #16b9ac;
+}
+
+.bold-colors b:nth-child(3n-2) {
+  color: #dc4583;
+}
+
+select.form-control {
+  appearance: menulist;
+}
